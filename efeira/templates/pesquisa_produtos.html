@@ -1,0 +1,29 @@
+<!-- Em seu arquivo pesquisa_produtos.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pesquisa de Produtos</title>
+</head>
+<body>
+    <h1>Pesquisa de Produtos</h1>
+    
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    {% if produtos %}
+        <h2>Resultados para "{{ termo_de_pesquisa }}"</h2>
+        <ul>
+            {% for produto in produtos %}
+                <li>{{ produto.nome }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        {% if termo_de_pesquisa %}
+            <p>Nenhum produto encontrado para "{{ termo_de_pesquisa }}".</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

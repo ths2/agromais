@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Minha Página Inicial{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Lista de Produtos</h1>
+
+    <!-- Lista de Produtos em Tabela Responsiva -->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos %}
+                <tr>
+                    <td><a href="{% url 'detalhes_produto' produto.id %}">{{ produto.nome }}</a></td>
+                    <td>{{ produto.preco }}</td>
+                    <td><a href="">Excluir</a></td>
+                </tr>
+                <tr>
+                    <td colspan="3">{{ produto.descricao }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">Nenhum produto disponível.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="" class="btn btn-primary">Criar Novo Produto</a>
+
+    <!-- Lista de Produtos em Grade Responsiva -->
+    <h1 class="mt-5">Lista de Produtos</h1>
+    <div class="row">
+        {% for produto in produtos %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card">
+                <img src="{{ produto.imagem.url }}" class="card-img-top" alt="{{ produto.nome }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ produto.nome }}</h5>
+                    <p class="card-text">{{ produto.descricao }}</p>
+                    <p class="card-price">Preço: R$ {{ produto.preco }}</p>
+                    <p class="card-category">Categoria: {{ produto.categoria }}</p>
+                    <p class="card-producer">Produtor: {{ produto.produtor }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+
+
+    {% endblock %}

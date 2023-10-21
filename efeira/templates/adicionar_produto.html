@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Minha Página Inicial{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Criar Produto</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="{{ form.nome.id }}" class="form-label">Nome do Produto</label>
+            {{ form.nome }}
+        </div>
+        
+        <div class="mb-3">
+            <label for="{{ form.descricao.id }}" class="form-label">Descrição</label>
+            {{ form.descricao }}
+        </div>
+        
+        <div class="mb-3">
+            <label for="{{ form.preco.id }}" class="form-label">Preço (R$)</label>
+            {{ form.preco }}
+        </div>
+        
+        <div class="mb-3">
+            <label for="{{ form.categoria.id }}" class="form-label">Categoria</label>
+            {{ form.categoria }}
+        </div>
+        
+        <div class="mb-3">
+            <label for="{{ form.imagem.id }}" class="form-label">Imagem</label>
+            {{ form.imagem }}
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="{{ form.data_inicio_colheita.id }}" class="form-label">Data de Início da Colheita</label>
+                {{ form.data_inicio_colheita }}
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="{{ form.data_fim_colheita.id }}" class="form-label">Data de Fim da Colheita</label>
+                {{ form.data_fim_colheita }}
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="{{ form.produtor.id }}" class="form-label">Produtor</label>
+            {{ form.produtor }}
+        </div>
+
+        <div class="mb-3 form-check">
+            {{ form.pronto_para_colheita }}
+            <label class="form-check-label" for="{{ form.pronto_para_colheita.id }}">Pronto para Colheita</label>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Criar Produto</button>
+    </form>
+    <a href="{% url 'lista_produtos' %}" class="btn btn-secondary mt-3">Cancelar</a>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Minha Página Inicial{% endblock %}
+
+{% block content %}
+    <h2>Bem-vindo à Página Inicial</h2>
+    <!-- Conteúdo específico da página aqui -->
+    <h1>Detalhes do Produto</h1>
+    <h2>{{ produto.nome }}</h2>
+    <p>Descrição: {{ produto.descricao }}</p>
+    <p>Preço: {{ produto.preco }}</p>
+    <p>Categoria: {{ produto.categoria }}</p>
+    <a href="{% url 'lista_produtos' %}">Voltar para a lista de produtos</a>
+{% endblock %}
